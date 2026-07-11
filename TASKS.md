@@ -45,6 +45,8 @@ Modify the implementation so that the `type` property is stored as a **string**
 
 You can test your implementation by running the `Task1Tests` test class.
 
+Fix: Without @Enumerated, JPA defaults to EnumType.ORDINAL: it stores the enum's position (ATMOSPHERIC_PRESSURE=0, TEMPERATURE=1, HUMIDITY=2). That's what made the column an integer.
+
 ### 2. Task
 
 The application contains three entities: `Sensor`, `SensorReading`, and `Alert`.  

@@ -13,7 +13,8 @@ public class SensorReadingListener {
     this.sensorReadingService = sensorReadingService;
   }
 
-  @KafkaListener(topics = {"sensor-reading"}, groupId = "iot-monitoring")
+  @KafkaListener(topics = {"sensor-reading"}, groupId = "iot-monitoring",
+      properties = "spring.json.value.default.type=com.aldisued.iot.monitoring.dto.SensorReadingDto")
   public void listen(SensorReadingDto sensorReadingDto) {
     sensorReadingService.saveSensorReading(sensorReadingDto);
   }

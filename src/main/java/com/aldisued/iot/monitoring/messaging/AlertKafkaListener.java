@@ -13,7 +13,8 @@ public class AlertKafkaListener {
     this.alertService = alertService;
   }
 
-  @KafkaListener(topics = {"sensor-alerts"}, groupId = "iot-monitoring")
+  @KafkaListener(topics = {"sensor-alerts"}, groupId = "iot-monitoring",
+      properties = "spring.json.value.default.type=com.aldisued.iot.monitoring.dto.AlertDto")
   public void listen(AlertDto alertDto) {
     alertService.saveAlert(alertDto);
   }
