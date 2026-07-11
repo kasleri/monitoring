@@ -5,9 +5,15 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import java.time.LocalDateTime;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
 @Table(name = "sensor_readings")
 @Entity
 public class SensorReading {
@@ -22,6 +28,10 @@ public class SensorReading {
   @Column(nullable = false)
   private LocalDateTime timestamp;
 
+  @ManyToOne(optional = false)
+  @JoinColumn(name = "sensor_id", nullable = false)
+  private Sensor sensor;
+
   public SensorReading() {
   }
 
@@ -32,39 +42,6 @@ public class SensorReading {
   ) {
     this.value = value;
     this.timestamp = timestamp;
-    //TODO: Task 2
-  }
-
-  public Long getId() {
-    return id;
-  }
-
-  public void setId(Long id) {
-    this.id = id;
-  }
-
-  public Double getValue() {
-    return value;
-  }
-
-  public void setValue(Double value) {
-    this.value = value;
-  }
-
-  public LocalDateTime getTimestamp() {
-    return timestamp;
-  }
-
-  public void setTimestamp(LocalDateTime timestamp) {
-    this.timestamp = timestamp;
-  }
-
-  public Sensor getSensor() {
-    //TODO: Task 2
-    return null;
-  }
-
-  public void setSensor(Sensor sensor) {
-    //TODO: Task 2
+    this.sensor = sensor;
   }
 }
