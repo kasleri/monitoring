@@ -30,3 +30,24 @@ Please complete the assignment **within one week**.
 
 ## 📂 Project Structure (expected)
 
+```
+monitoring/
+└── src/
+    ├── main/
+    │   ├── java/com/aldisued/iot/monitoring/
+    │   │   ├── controller/             # REST controllers (/sensors, /sensor-readings, /alerts)
+    │   │   ├── service/                # business logic + measurement calculators
+    │   │   ├── messaging/              # Kafka listeners + alert publisher
+    │   │   ├── event/                  # application events (AlertCreatedEvent)
+    │   │   ├── mapper/                 # MapStruct DTO ⇆ entity mappers
+    │   │   ├── repository/             # Spring Data JPA repositories (+ JPQL queries)
+    │   │   ├── entity/                 # JPA entities (Sensor, SensorReading, Alert)
+    │   │   ├── dto/                    # request/response records
+    │   │   └── exception/              # typed exceptions mapped to HTTP statuses
+    │   └── resources/                  # datasource + Kafka configuration
+    └── test/
+        ├── java/com/aldisued/iot/monitoring/
+        │   └── tasks/                  # Task0–Task10 tests + Kafka integration test
+        └── resources/sql/              # per-task test fixtures
+```
+
